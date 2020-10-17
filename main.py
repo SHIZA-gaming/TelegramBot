@@ -1,16 +1,18 @@
 import telebot
 import const
+import os
+import urllib.request as urllib2
 
 bot = telebot.TeleBot(const.token)
 
 
-upd = bot.get_updates()
-print(upd)
-
-last_upd = upd[-1]
-message_from_user = last_upd.message
-print(message_from_user)
-print(bot.get_me())
+# upd = bot.get_updates()
+# print(upd)
+#
+# last_upd = upd[-1]
+# message_from_user = last_upd.message
+# print(message_from_user)
+# print(bot.get_me())
 
 
 def log(message, answer):
@@ -28,7 +30,11 @@ def log(message, answer):
 def heandle_start(message):
     user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
     user_markup.row("/start", "/stop")
-    user_markup.row("IPhone 12", "IPhone 11", "IPhone 10")
+    user_markup.row("IPhone 12", "IPhone 12 mini")
+    user_markup.row("IPhone 12 Pro", "IPhone 12 Pro Max")
+    user_markup.row("IPhone 11", "IPhone 11 Pro")
+    user_markup.row("IPhone 11 Pro Max", "IPhone XS Max")
+    user_markup.row("IPhone X", "IPhone XS", "IPhone XR")
     user_markup.row("IPhone", "IPhone SE")
     bot.send_message(message.chat.id, "Выбери свой АЙФОН", reply_markup=user_markup)
 
@@ -47,12 +53,25 @@ def heandle_help(message):
 
 @bot.message_handler(content_types=['text'])
 def heandle_text(message):
-    img = "https: // imbt.ga / H2EykWkfnH"
-    text = "IPhone 12 - ещё нет в продаже на оффициальном сайте ЭППЛ,но зато есть у нас." \
-           " IPhone 12 есть в 3 цветах: Purple, White, Black" \
-           " Купи IPhone 12 всего лишь за 120,000 рублей"
+    # IP12img = "https://imbt.ga/H2EykWkfnH"
+    # IP12text = "IPhone 12 - ещё нет в продаже на оффициальном сайте ЭППЛ,но зато есть у нас." \
+    #        " IPhone 12 есть в 3 цветах: Purple, White, Black" \
+    #        " Купи IPhone 12 всего лишь за 120,000 рублей"
     if message.text == "IPhone 12":
-        bot.send_message(message.chat.id, f'{img}\n{text}')
+        directory = "C:/Users/g.chistopolskij/github/TelegramBot/photo/"
+        IP12img = open(directory + "IP12.jpg", 'rb')
+        IP12text = "IPhone 12 есть в 5 цветах: Black(осуждаю!), White, Green, Blue, (PRODUCT) Red.\nКупи IPhone 12\
+        всего лишь за 80.000 рублей"
+        IP12MINIimg = open(directory + "mini.jpeg", 'rb')
+        IP12MINItext = "IPhone 12 mini есть в 5 цветах: Black(осуждаю!), White, Green, Blue, (PRODUCT) Red.\n Купи IPhone 12 mini\
+        всего за какие-то жалкие 70.000 рублей.\n \
+        https://www.apple.com/ru/shop/buy-iphone/iphone-12"
+        bot.send_photo(message.from_user.id, IP12img)
+        bot.send_message(message.chat.id, IP12text)
+            # img.close()
+        # bot.send_message(message.chat.id, f'{IP12img}\n{IP12text}')
+#elif message.text == "IPhone 11"
+        # bot.send_message(message.chat.id, f'{IP12img}\n{IP12text}')
 
 
 bot.polling(none_stop=True, interval=0)
