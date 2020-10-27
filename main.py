@@ -2,6 +2,7 @@ import telebot
 import const
 import os
 import urllib.request as urllib2
+from telebot import types
 
 bot = telebot.TeleBot(const.token)
 
@@ -42,7 +43,7 @@ def heandle_start(message):
 @bot.message_handler(commands=["stop"])
 def heandle_stop(message):
     remove_markup = telebot.types.ReplyKeyboardRemove()
-    bot.send_message(message.chat.id,  "Мы закончили?... Ладно...(", reply_markup=remove_markup)
+    bot.send_message(message.chat.id, "Мы закончили?... Ладно...(", reply_markup=remove_markup)
 #Убрать клавиаткуру
 
 @bot.message_handler(commands=["help"])
@@ -57,13 +58,14 @@ def heandle_text(message):
         directory = "C:/Users/g.chistopolskij/github/TelegramBot/photo/"
         IP12img = open(directory + "IP12.jfif", 'rb')
         IP12text = "IPhone 12 есть в 5 цветах: Black(осуждаю!), White, Green, Blue, (PRODUCT) Red.\nКупи IPhone 12 всего лишь за 80.000 рублей"
+        bot.send_photo(message.from_user.id, IP12img)
+        bot.send_message(message.chat.id, IP12text, reply_markup=markup)
+
         markup = types.InlineKeyboardMarkup(row_width=2)
         option1 = types.InlineKeyboardButton("Купить", callback_data='buy')
         option2 = types.InlineKeyboardButton("Не покупать", callback_data='dont buy')
         markup.add(option1, option2)
-        bot.send_photo(message.from_user.id, IP12img)
-        bot.send_message(message.chat.id, IP12text, reply_markup=markup)
-        bot.send_message(message.chat.id, "https://www.apple.com/ru/shop/buy-iphone/iphone-12")
+
 
     elif message.text == "IPhone 12 mini":
         directory = "C:/Users/g.chistopolskij/github/TelegramBot/photo/"
@@ -87,17 +89,17 @@ def callback_inline(call):
     try:
         if call.message:
             if call.data == 'buy':
-                bot.send_message(call.message.chat.id, 'Вот и отличненько 😊')
-            elif call.data == 'dont buy':
+                bot.send_message(call.message.chat.id, 'https://www.apple.com/ru/shop/buy-iphone/iphone-12 😊')
+            elif call.data == 'dont_buy':
                 bot.send_message(call.message.chat.id, 'Бывает 😢')
 
             # remove inline buttons
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="😊 Как дела?",
-                reply_markup=None)
+            # bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="😊 Ты точено этого хочешь?",
+            #     reply_markup=None)
 
             # show alert
-            bot.answer_callback_query(callback_query_id=call.id, show_alert=False,
-                text="ЭТО ТЕСТОВОЕ УВЕДОМЛЕНИЕ!!11")
+            # bot.answer_callback_query(callback_query_id=call.id, show_alert=False,
+            #     text="ЭТО ТЕСТОВОЕ УВЕДОМЛЕНИЕ!!11")
 
     except Exception as e:
         print(repr(e))
