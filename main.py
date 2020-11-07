@@ -55,8 +55,10 @@ def heandle_help(message):
 @bot.message_handler(content_types=['text'])
 def heandle_text(message):
     if message.text == "IPhone 12":
-        directory = "C:/Users/Zerg/github/TelegramBot/photo/"
-        IP12img = open(directory + "IP12.jfif", 'rb')
+        # url = "https://drive.google.com/file/d/1dIyX758WYc7EL64wO13DZCrVDoyCcss0/view?usp=sharing"
+        # urllib2.urlretrieve(url, "url_image.jpg")
+        #open(directory + "IP12.jfif", 'rb')
+        IP12img = "https://drive.google.com/file/d/1dIyX758WYc7EL64wO13DZCrVDoyCcss0/view?usp=sharing"
         IP12text = "IPhone 12 есть в 5 цветах: Black(осуждаю!), White, Green, Blue, (PRODUCT) Red.\n Купи IPhone 12 всего лишь за 80.000 рублей" 
 
         markup = types.InlineKeyboardMarkup(row_width=2) 
@@ -68,8 +70,9 @@ def heandle_text(message):
         bot.send_message(message.chat.id, IP12text, reply_markup=markup)
         
     elif message.text == "IPhone 12 mini":
-        directory = "C:/Users/Zerg/github/TelegramBot/photo/"
-        IP12MINIimg = open(directory + "mini.jpeg", 'rb')
+        #directory = "https://drive.google.com/drive/folders/1t7IfUcHYp4AhTjOcKgG499ul7cp09ZNu?usp=sharing"
+        #open(directory + "mini.jpeg", 'rb')
+        IP12MINIimg = "https://drive.google.com/file/d/1k1wqU6Q7pU-cMm76mT0Y3KYS1U1Ogf7P/view?usp=sharing"
         IP12MINItext = "IPhone 12 mini есть в 5 цветах: Black(осуждаю!), White, Green, Blue, (PRODUCT) Red.\n Купи IPhone 12 mini всего за какие-то жалкие 70.000 рублей!"
 
         markup = types.InlineKeyboardMarkup(row_width=2) 
@@ -81,8 +84,9 @@ def heandle_text(message):
         bot.send_message(message.chat.id, IP12MINItext, reply_markup=markup)
 
     elif message.text == "IPhone 12 Pro":
-        directory = "C:/Users/Zerg/github/TelegramBot/photo/"
-        IP12PROimg = open(directory + "IP12PRO.jfif", 'rb')
+        # directory = "https://drive.google.com/drive/folders/1t7IfUcHYp4AhTjOcKgG499ul7cp09ZNu?usp=sharing"
+        # open(directory + "IP12PRO.jfif", 'rb')
+        IP12PROimg = "https://drive.google.com/file/d/1dcINWcJzzOgV-xnnn1KFFcWQylFQ6K5R/view?usp=sharing"
         IP12PROtext = "IPhone 12 Pro есть в 4 цветах: Graphite, Silver, Gold, Pacific Blue\n Купи IPhone 12 Pro всего за 100.000 рублей!"
 
         markup = types.InlineKeyboardMarkup(row_width=2) 
@@ -94,8 +98,9 @@ def heandle_text(message):
         bot.send_message(message.chat.id, IP12PROtext, reply_markup=markup)
 
     elif message.text == "IPhone 12 Pro Max" :
-        directory = "C:/Users/Zerg/github/TelegramBot/photo/"
-        IP12PROMAXimg = open(directory + "IP12PROMAX.jpg", 'rb')
+        # directory = "C:/Users/g.chistopolskij/github/TelegramBot/photo"
+        # open(directory + "IP12PROMAX.jpg", 'rb')
+        IP12PROMAXimg = "https://drive.google.com/file/d/1DFpzujWpGjliN3hrmRsLK5-htJ6Nt5cl/view?usp=sharing"
         IP12PROMAXtext = "IPhone 12 Pro Max есть в 4 цветах: Graphite, Silver, Gold, Pacific Blue\n Купи IPhone 12 Pro Max всего за 110.000 рублей!"
 
         markup = types.InlineKeyboardMarkup(row_width=2) 
@@ -107,9 +112,10 @@ def heandle_text(message):
         bot.send_message(message.chat.id, IP12PROMAXtext, reply_markup=markup)
 
     elif message.text == "IPhone 11" :
-        directory = "C:/Users/Zerg/github/TelegramBot/photo/"
-        IP11img = open(directory + "IP11.jpg", 'rb')
-        IP11text = "IPone 11 есть в 6 цветах: White, Black(осуждаю!), Green, Yellow, Purple, (PRODUCT)Red\n Купи IPhone 11 всего за 55.000 рублей!"
+        # directory = "C:/Users/g.chistopolskij/github/TelegramBot/photo"
+        # open(directory + "IP11.jfif", 'rb')
+        IP11img = "https://drive.google.com/file/d/1KcIoYZW5dD4LgDx_JWhoLJ7YTdtXUgNA/view?usp=sharing"
+        IP11text = "IPhone 11 есть в 6 цветах: White, Black(осуждаю!), Green, Yellow, Purple, (PRODUCT)Red\n Купи IPhone 11 всего за 55.000 рублей!"
 
         markup = types.InlineKeyboardMarkup(row_width=2) 
         option1_11 = types.InlineKeyboardButton("Купить", callback_data='buy_11')
@@ -118,6 +124,18 @@ def heandle_text(message):
 
         bot.send_photo(message.from_user.id, IP11img)
         bot.send_message(message.chat.id, IP11text, reply_markup=markup)
+
+    elif message.text == "IPhone 11 Pro" :
+        IP11PROimg = "https://drive.google.com/file/d/1d8R0mpRJ4ICwLSCWk3bFGACTO8O3aUrc/view?usp=sharing"
+        IP11PROtext = "IPhone 11 Pro есть в 4 цветах: Dark green, Silver, Space Grey, Gold.\n Купи IPhone 11 Pro всего за 80.000 рублей !"
+        
+        markup = types.InlineKeyboardMarkup(row_width=2) 
+        option1_11pro = types.InlineKeyboardButton("Купить", callback_data='buy_11pro')
+        option2_11pro = types.InlineKeyboardButton("Не покупать", callback_data='dont_buy')
+        markup.add(option1_11pro, option2_11pro)
+
+        bot.send_photo(message.from_user.id, IP11PROimg)
+        bot.send_message(message.chat.id, IP11PROtext, parse_mode='Markdown', reply_markup=markup)
 
 
             # img.close()
@@ -135,6 +153,8 @@ def callback_inline(call):
                 bot.send_message(call.message.chat.id, 'https://www.apple.com/ru/shop/buy-iphone/iphone-12-pro')
             elif call.data == 'buy_11':
                  bot.send_message(call.message.chat.id, "https://www.apple.com/ru/shop/buy-iphone/iphone-11")
+            elif call.data == 'buy_11pro':
+                bot.send_message(call.message.chat.id, 'https://www.svyaznoy.ru/catalog/phone/224/5633201')
             elif call.data == 'dont_buy':
                 bot.send_message(call.message.chat.id, 'Бывает 😢')
 
