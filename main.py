@@ -57,8 +57,7 @@ def heandle_text(message):
     if message.text == "IPhone 12":
         directory = "C:/Users/Zerg/github/TelegramBot/photo/"
         IP12img = open(directory + "IP12.jfif", 'rb')
-        IP12text = "IPhone 12 есть в 5 цветах: Black(осуждаю!), White, Green, Blue, (PRODUCT) Red.\n\
-Купи IPhone 12 всего лишь за 80.000 рублей" 
+        IP12text = "IPhone 12 есть в 5 цветах: Black(осуждаю!), White, Green, Blue, (PRODUCT) Red.\n Купи IPhone 12 всего лишь за 80.000 рублей" 
 
         markup = types.InlineKeyboardMarkup(row_width=2) 
         option1_12 = types.InlineKeyboardButton("Купить", callback_data='buy_12_12mini')
