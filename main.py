@@ -55,30 +55,72 @@ def heandle_help(message):
 @bot.message_handler(content_types=['text'])
 def heandle_text(message):
     if message.text == "IPhone 12":
-        directory = "C:/Users/g.chistopolskij/github/TelegramBot/photo/"
+        directory = "C:/Users/Zerg/github/TelegramBot/photo/"
         IP12img = open(directory + "IP12.jfif", 'rb')
-        IP12text = "IPhone 12 есть в 5 цветах: Black(осуждаю!), White, Green, Blue, (PRODUCT) Red.\nКупи IPhone 12 всего лишь за 80.000 рублей"
+        IP12text = "IPhone 12 есть в 5 цветах: Black(осуждаю!), White, Green, Blue, (PRODUCT) Red.\n\
+Купи IPhone 12 всего лишь за 80.000 рублей" 
+
+        markup = types.InlineKeyboardMarkup(row_width=2) 
+        option1_12 = types.InlineKeyboardButton("Купить", callback_data='buy_12_12mini')
+        option2_12 = types.InlineKeyboardButton("Не покупать", callback_data='dont_buy')
+        markup.add(option1_12, option2_12)
+
         bot.send_photo(message.from_user.id, IP12img)
         bot.send_message(message.chat.id, IP12text, reply_markup=markup)
-
-        markup = types.InlineKeyboardMarkup(row_width=2)
-        option1 = types.InlineKeyboardButton("Купить", callback_data='buy')
-        option2 = types.InlineKeyboardButton("Не покупать", callback_data='dont buy')
-        markup.add(option1, option2)
-
-
+        
     elif message.text == "IPhone 12 mini":
-        directory = "C:/Users/g.chistopolskij/github/TelegramBot/photo/"
+        directory = "C:/Users/Zerg/github/TelegramBot/photo/"
         IP12MINIimg = open(directory + "mini.jpeg", 'rb')
-        IP12MINItext = "IPhone 12 mini есть в 5 цветах: Black(осуждаю!), White, Green, Blue, (PRODUCT) Red.\nКупи IPhone 12 mini всего за какие-то жалкие 70.000 рублей.\n\
-https://www.apple.com/ru/shop/buy-iphone/iphone-12"
+        IP12MINItext = "IPhone 12 mini есть в 5 цветах: Black(осуждаю!), White, Green, Blue, (PRODUCT) Red.\n Купи IPhone 12 mini всего за какие-то жалкие 70.000 рублей!"
+
+        markup = types.InlineKeyboardMarkup(row_width=2) 
+        option1_12_mini = types.InlineKeyboardButton("Купить", callback_data='buy_12_12mini')
+        option2_12_mini = types.InlineKeyboardButton("Не покупать", callback_data='dont_buy')
+        markup.add(option1_12_mini, option2_12_mini)
+
         bot.send_photo(message.from_user.id, IP12MINIimg)
-        bot.send_message(message.chat.id, IP12MINItext)
+        bot.send_message(message.chat.id, IP12MINItext, reply_markup=markup)
+
     elif message.text == "IPhone 12 Pro":
-        directory = "C:/Users/g.chistopolskij/github/TelegramBot/photo/"
+        directory = "C:/Users/Zerg/github/TelegramBot/photo/"
         IP12PROimg = open(directory + "IP12PRO.jfif", 'rb')
-        IP12PROtext = "IPhone 12 Pro есть в 4 цветах: Graphite, Silver, Gold, Pacific Blue\n Купи IPhone 12 Pro всего за 100.000 рублей\n\
-https://www.apple.com/ru/shop/buy-iphone/iphone-12-pro"
+        IP12PROtext = "IPhone 12 Pro есть в 4 цветах: Graphite, Silver, Gold, Pacific Blue\n Купи IPhone 12 Pro всего за 100.000 рублей!"
+
+        markup = types.InlineKeyboardMarkup(row_width=2) 
+        option1_12_pro = types.InlineKeyboardButton("Купить", callback_data='buy_12pro_proMax')
+        option2_12_pro = types.InlineKeyboardButton("Не покупать", callback_data='dont_buy')
+        markup.add(option1_12_pro, option2_12_pro)
+
+        bot.send_photo(message.from_user.id, IP12PROimg)
+        bot.send_message(message.chat.id, IP12PROtext, reply_markup=markup)
+
+    elif message.text == "IPhone 12 Pro Max" :
+        directory = "C:/Users/Zerg/github/TelegramBot/photo/"
+        IP12PROMAXimg = open(directory + "IP12PROMAX.jpg", 'rb')
+        IP12PROMAXtext = "IPhone 12 Pro Max есть в 4 цветах: Graphite, Silver, Gold, Pacific Blue\n Купи IPhone 12 Pro Max всего за 110.000 рублей!"
+
+        markup = types.InlineKeyboardMarkup(row_width=2) 
+        option1_12_proMax = types.InlineKeyboardButton("Купить", callback_data='buy_12pro_proMax')
+        option2_12_proMax = types.InlineKeyboardButton("Не покупать", callback_data='dont_buy')
+        markup.add(option1_12_proMax, option2_12_proMax)
+
+        bot.send_photo(message.from_user.id, IP12PROMAXimg)
+        bot.send_message(message.chat.id, IP12PROMAXtext, reply_markup=markup)
+
+    elif message.text == "IPhone 11" :
+        directory = "C:/Users/Zerg/github/TelegramBot/photo/"
+        IP11img = open(directory + "IP11.jpg", 'rb')
+        IP11text = "IPone 11 есть в 6 цветах: White, Black(осуждаю!), Green, Yellow, Purple, (PRODUCT)Red\n Купи IPhone 11 всего за 55.000 рублей!"
+
+        markup = types.InlineKeyboardMarkup(row_width=2) 
+        option1_11 = types.InlineKeyboardButton("Купить", callback_data='buy_11')
+        option2_11 = types.InlineKeyboardButton("Не покупать", callback_data='dont_buy')
+        markup.add(option1_11, option2_11)
+
+        bot.send_photo(message.from_user.id, IP11img)
+        bot.send_message(message.chat.id, IP11text, reply_markup=markup)
+
+
             # img.close()
         # bot.send_message(message.chat.id, f'{IP12img}\n{IP12text}')
 #elif message.text == "IPhone 11"
@@ -88,8 +130,12 @@ https://www.apple.com/ru/shop/buy-iphone/iphone-12-pro"
 def callback_inline(call):
     try:
         if call.message:
-            if call.data == 'buy':
+            if call.data == 'buy_12_12mini':
                 bot.send_message(call.message.chat.id, 'https://www.apple.com/ru/shop/buy-iphone/iphone-12 😊')
+            elif call.data == 'buy_12pro_proMax':   
+                bot.send_message(call.message.chat.id, 'https://www.apple.com/ru/shop/buy-iphone/iphone-12-pro')
+            elif call.data == 'buy_11':
+                 bot.send_message(call.message.chat.id, "https://www.apple.com/ru/shop/buy-iphone/iphone-11")
             elif call.data == 'dont_buy':
                 bot.send_message(call.message.chat.id, 'Бывает 😢')
 
@@ -97,9 +143,9 @@ def callback_inline(call):
             # bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="😊 Ты точено этого хочешь?",
             #     reply_markup=None)
 
-            # show alert
-            # bot.answer_callback_query(callback_query_id=call.id, show_alert=False,
-            #     text="ЭТО ТЕСТОВОЕ УВЕДОМЛЕНИЕ!!11")
+             # show alert
+            #  bot.answer_callback_query(callback_query_id=call.id, show_alert=False,
+            #      text="ЭТО ТЕСТОВОЕ УВЕДОМЛЕНИЕ!!11")
 
     except Exception as e:
         print(repr(e))
