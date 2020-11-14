@@ -136,6 +136,33 @@ def heandle_text(message):
 
         bot.send_photo(message.from_user.id, IP11PROimg)
         bot.send_message(message.chat.id, IP11PROtext, parse_mode='Markdown', reply_markup=markup)
+        
+
+    elif message.text == "IPhone 11 Pro Max" : 
+        IP11PROMAXimg  = "https://drive.google.com/file/d/1xJixu2NOBoPhNa6fR1otA5Vig7Me3jse/view?usp=sharing"
+        IP11PROMAXtext = "IPhone 11 Pro Max есть в 4 цветах: Dark green, Silver, Space Grey, Gold.\n Купи IPhone 11 Pro Max всего за 90.000 рублей !"
+
+        markup = types.InlineKeyboardMarkup(row_width=2) 
+        option1_11proMax = types.InlineKeyboardButton("Купить", callback_data='buy_11proMax')
+        option2_11proMax = types.InlineKeyboardButton("Не покупать", callback_data='dont_buy')
+        markup.add(option1_11proMax, option2_11proMax)
+
+        bot.send_photo(message.from_user.id, IP11PROMAXimg)
+        bot.send_message(message.chat.id, IP11PROMAXtext, parse_mode='Markdown', reply_markup=markup)
+
+    
+    elif message.text == "IPhone XS Max" :
+        IPXSMAXimg = "https://drive.google.com/file/d/14fn5nxVCdMkOHferGt3pm5YVy_Mo7qg2/view?usp=sharing"
+        IPXSMAXtext = "IPhone XS Max есть в 3 цветах: Space Gray, Silver, Gold.\n Купить IPhone XS Max всего за 65.000 рублей !"
+
+        markup = types.InlineKeyboardMarkup(row_width=2) 
+        option1_XSMax = types.InlineKeyboardButton("Купить", callback_data='buy_11proMax')
+        option2_XSMax = types.InlineKeyboardButton("Не покупать", callback_data='dont_buy')
+        markup.add(option1_XSMax, option2_XSMax)
+
+        bot.send_photo(message.from_user.id, IPXSMAXimg)
+        bot.send_message(message.chat.id, IPXSMAXtext, parse_mode='Markdown', reply_markup=markup)
+
 
 
             # img.close()
@@ -155,6 +182,8 @@ def callback_inline(call):
                  bot.send_message(call.message.chat.id, "https://www.apple.com/ru/shop/buy-iphone/iphone-11")
             elif call.data == 'buy_11pro':
                 bot.send_message(call.message.chat.id, 'https://www.svyaznoy.ru/catalog/phone/224/5633201')
+            elif call.data == "buy_11proMax":
+                bot.send_message(call.message.chat.id, "https://shop.mts.ru/catalog/smartfony/apple/iphone-11-pro-iphone-11-pro-max/")
             elif call.data == 'dont_buy':
                 bot.send_message(call.message.chat.id, 'Бывает 😢')
 
